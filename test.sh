@@ -1,24 +1,25 @@
-echo "Running tests..."
+echo "Testando o programa..."
 echo
 
-output=$(./a.out)
+output=$(./hello)
 expected_output="Hello, World!"
 
 if [ $? -eq 0 ] ; then
-  echo "Pass: Program exited zero"
+  echo "Passo 1 [OK]: O programa executou corretamente."
 else
-  echo "Fail: Program did not exit zero"
+  echo "Passo 1 [Falhou]: O programa não executou corretamente."
   exit 1
 fi
 
 if [ "$output" == "$expected_output" ] ; then
-  echo "Pass: Output is correct"
+  echo "Passo 2 [OK]: Passou: A saída é correta"
 else
-  echo "Expected '$expected_output' but got: $output"
+  echo "Passo 2 [Falhou] O professor esperava: '$expected_output' mas você enviou: '$output'"
+  colordiff <(echo "'$expected_output'")  <(echo "'$output'")
   exit 1
 fi
 
 echo
-echo "All tests passed."
+echo "Todos os testes passaram."
 
 exit 0

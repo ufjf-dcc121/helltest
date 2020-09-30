@@ -1,8 +1,10 @@
-a.out:
-	gcc hello.c
+all: hello test clean
 
-clean:
-	rm hello
+hello:
+	@gcc hello.c -o hello
 
-test: a.out
-	bash test.sh
+clean: ./hello
+	@rm hello
+
+test: hello
+	@bash test.sh
